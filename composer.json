@@ -1,0 +1,22 @@
+{
+    "name": "zhibaihe/event",
+    "description": "Event dispatcher for PHP",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^5.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "DUAN Zhiyan",
+            "email": "zhiyan@zhibaihe.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Zhibaihe\\Event\\": "src/"
+        }
+    }
+}

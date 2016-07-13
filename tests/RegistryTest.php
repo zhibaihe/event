@@ -36,5 +36,17 @@ class RegistryTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(['bar', 'zoo'], $registry->get('foo'));
     }
 
+    /** @test */
+    public function it_can_be_constructed_with_an_array()
+    {
+        $registry = new Registry([
+            'foo' => 'bar',
+            'zoo' => ['dog', 'cat'],
+        ]);
+
+        $this->assertEquals('bar', $registry->get('foo'));
+        $this->assertEquals(['dog', 'cat'], $registry->get('zoo'));
+    }
+
 }
 

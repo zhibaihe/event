@@ -47,6 +47,28 @@ class DispatcherTest extends PHPUnit_Framework_TestCase {
 
         $dispatcher->dispatch('foo', 'bar');
     }
+
+    /** @test */
+    public function it_accepts_pre_defined_event_bindings()
+    {
+        $listener = $this->createMock('DummyListener', ['handle']);
+        $listener->expects($this->once())
+            ->method('handle');
+
+        $dispatcher = new Dispatcher([
+            'foo' => [[$listener, 'handle']],
+        ]);
+
+        $dispatcher->dispatch('foo');
+    }
+
+    /** @test */
+    public function it_provides_a_default_dispatcher()
+    {
+        $dispatcher = Dispatcher::getDefaultDispatcher();
+
+        $this->assertTrue($dispatcher instanceof Dispatcher);
+    }
 }
 
 class DummyListener{

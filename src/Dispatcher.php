@@ -4,11 +4,22 @@ namespace Zhibaihe\Event;
 
 class Dispatcher {
 
-    protected $registry;
+    protected $registry = null;
 
-    public function __construct()
+    protected static $defaultDispatcher = null;
+
+    public function __construct($bindings = [])
     {
-        $this->registry = new Registry;
+        $this->registry = new Registry($bindings);
+    }
+
+    public static function getDefaultDispatcher()
+    {
+        if( ! self::$defaultDispatcher){
+            self::$defaultDispatcher = new static;
+        }
+
+        return self::$defaultDispatcher;
     }
 
     /**
